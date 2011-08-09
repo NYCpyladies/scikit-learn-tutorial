@@ -127,7 +127,9 @@ categories out of the 20 available in the dataset:</p>
 <p>We can now load the list of files matching those categories as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">twenty_train</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s">&#39;data/twenty_newsgroups/20news-bydate-train&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                          <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+<span class="gp">... </span>                          <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="gp">... </span>                          <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">...</span>
 </pre></div>
 </div>
 <p>The returned dataset is a <tt class="docutils literal"><span class="pre">scikit-learn</span></tt> &#8220;bunch&#8221;: a simple holder
@@ -343,7 +345,8 @@ We can now train the model with a single command:</p>
 <p>Evaluating the predictive accuracy of the model is equally easy:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">twenty_test</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s">&#39;data/twenty_newsgroups/20news-bydate-test&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                         <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+<span class="gp">... </span>                         <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="gp">... </span>                         <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">docs_test</span> <span class="o">=</span> <span class="n">twenty_test</span><span class="o">.</span><span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">predicted</span> <span class="o">=</span> <span class="n">text_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">docs_test</span><span class="p">)</span>
