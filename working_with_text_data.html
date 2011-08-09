@@ -140,14 +140,17 @@ keys or <tt class="docutils literal"><span class="pre">object</span></tt> attrib
 <span class="go">[&#39;alt.atheism&#39;, &#39;comp.graphics&#39;, &#39;sci.med&#39;, &#39;soc.religion.christian&#39;]</span>
 </pre></div>
 </div>
-<p>The files themselves are not loaded in memory yet:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">twenty_train</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">(2257,)</span>
+<p>The files themselves are loaded in memory in the <tt class="docutils literal"><span class="pre">data</span></tt> attribute. For
+reference the filenames are also available:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="go">2257</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">filenames</span><span class="p">)</span>
+<span class="go">2257</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">twenty_train</span><span class="o">.</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">&#39;data/twenty_newsgroups/20news-bydate-train/comp.graphics/38244&#39;</span>
 </pre></div>
 </div>
-<p>Let&#8217;s print the first 2 lines of the first file:</p>
+<p>Let&#8217;s print the first 2 lines of the first loaded file:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">])</span>
 <span class="go">From: clipper@mccarthy.csd.uwo.ca (Khun Yee Fung)</span>
 <span class="go">Subject: Re: looking for circle algorithm faster than Bresenhams</span>
@@ -209,7 +212,7 @@ larger that 100,000.</p>
 <p>If <tt class="docutils literal"><span class="pre">n_samples</span> <span class="pre">==</span> <span class="pre">10000</span></tt>, storing <tt class="docutils literal"><span class="pre">X</span></tt> as a numpy array of type
 float32 would require 10000 x 100000 x 4 bytes = <strong>4GB in RAM</strong> which
 is barely manageable on today&#8217;s computers.</p>
-<p>Furtunately, <strong>most values in X will be zeros</strong> since for a given
+<p>Fortunately, <strong>most values in X will be zeros</strong> since for a given
 document less than a couple thousands of distinct words will be
 used. For this reason we say that bags of words are typically
 <strong>high-dimensional sparse datasets</strong>. We can save a lot of memory by
@@ -247,8 +250,7 @@ instead of single words:</p>
 dictionary of features and transform documents to feature vectors:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">count_vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">docs_train</span> <span class="o">=</span> <span class="p">[</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">filenames</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">docs_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_counts</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(2257, 33883)</span>
 </pre></div>
@@ -336,7 +338,7 @@ like a compound classifier:</p>
 <p>The names <tt class="docutils literal"><span class="pre">vect</span></tt>, <tt class="docutils literal"><span class="pre">tfidf</span></tt> and <tt class="docutils literal"><span class="pre">clf</span></tt> (classifier) are arbitrary.
 We shall see their use in the section on grid search, below.
 We can now train the model with a single command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">text_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">docs_train</span><span class="p">,</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">text_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -365,7 +367,7 @@ classifier object into our pipeline:</p>
 <span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;tfidf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">()),</span>
 <span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;clf&#39;</span><span class="p">,</span> <span class="n">LinearSVC</span><span class="p">()),</span>
 <span class="gp">... </span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">text_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">docs_train</span><span class="p">,</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">text_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">predicted</span> <span class="o">=</span> <span class="n">text_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">docs_test</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">twenty_test</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>            
 <span class="go">0.922...</span>
@@ -417,14 +419,15 @@ parameter of either 100 or 1000 for the linear SVM:</p>
 <p>Obviously, such an exhaustive search can be expensive. If we have multiple
 CPU cores at our disposal, we can tell the grid searcher to try these eight
 parameter combinations in parallel with the <tt class="docutils literal"><span class="pre">n_jobs</span></tt> parameter. If we give
-this parameter a value of <tt class="docutils literal"><span class="pre">-1</span></tt>, grid search will detect how many cores are installed and uses them all:</p>
+this parameter a value of <tt class="docutils literal"><span class="pre">-1</span></tt>, grid search will detect how many cores
+are installed and uses them all:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gs_clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">text_clf</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The grid search instance behaves like a normal <tt class="docutils literal"><span class="pre">scikit-learn</span></tt>
 model. Let&#8217;s perform the search on a smaller subset of the training data
 to speed up the computation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gs_clf</span> <span class="o">=</span> <span class="n">gs_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">docs_train</span><span class="p">[:</span><span class="mi">400</span><span class="p">],</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">400</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gs_clf</span> <span class="o">=</span> <span class="n">gs_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">400</span><span class="p">],</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">400</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>The result of calling <tt class="docutils literal"><span class="pre">fit</span></tt> on a <tt class="docutils literal"><span class="pre">GridSearchCV</span></tt> object is a classifier
