@@ -61,8 +61,9 @@
         <h3>Contents</h3>
          <ul>
 <li><a class="reference internal" href="#">1. Tutorial setup</a><ul>
-<li><a class="reference internal" href="#install-scikit-learn-0-7">1.1. Install scikit-learn 0.7</a></li>
-<li><a class="reference internal" href="#download-the-datasets">1.2. Download the datasets</a></li>
+<li><a class="reference internal" href="#install-scikit-learn-build-dependencies">1.1. Install scikit-learn build dependencies</a></li>
+<li><a class="reference internal" href="#build-scikit-learn-from-source">1.2. Build scikit-learn from source</a></li>
+<li><a class="reference internal" href="#download-the-datasets">1.3. Download the datasets</a></li>
 </ul>
 </li>
 </ul>
@@ -81,7 +82,9 @@
 <p>The following assumes you have extracted the source distribution
 of this tutorial somewhere on your local disk. Alternatively you
 can use git to clone this repo directly from github onto your
-local disk.</p>
+local disk:</p>
+<div class="highlight-python"><pre>% git clone https://github.com/scikit-learn/scikit-learn-tutorial.git</pre>
+</div>
 <p>In the following we will name this folder <tt class="docutils literal"><span class="pre">$TUTORIAL_HOME</span></tt>. It
 should contain the following folders:</p>
 <blockquote>
@@ -97,46 +100,67 @@ where you will edit your own files for the exercices while keeping
 the original skeletons intact:</p>
 <div class="highlight-python"><pre>% cp -r skeletons workspace</pre>
 </div>
-<div class="section" id="install-scikit-learn-0-7">
-<h2>1.1. Install scikit-learn 0.7<a class="headerlink" href="#install-scikit-learn-0-7" title="Permalink to this headline">¶</a></h2>
-<p>Please refer to the <a class="reference external" href="http://scikit-learn.sourceforge.net/install.html">scikit-learn install</a> page for per-system instructions.</p>
-<p>You must have <tt class="docutils literal"><span class="pre">numpy</span></tt>, <tt class="docutils literal"><span class="pre">scipy</span></tt> and <tt class="docutils literal"><span class="pre">matplotlib</span></tt> installed first.</p>
-<p>Here are the instructions to install the 0.7 release from source
-on a POSIX system (e.g. Linux and MacOSX). First download the release
-archive and extract it <strong>in the folder next to $TUTORIAL_HOME</strong>:</p>
-<div class="highlight-python"><pre>% wget http://pypi.python.org/packages/source/s/scikits.learn/scikits.learn-0.7.tar.gz
-% tar zxvf scikits.learn-0.7.tar.gz
-% cd scikits.learn-0.7</pre>
+<div class="section" id="install-scikit-learn-build-dependencies">
+<h2>1.1. Install scikit-learn build dependencies<a class="headerlink" href="#install-scikit-learn-build-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to the <a class="reference external" href="http://scikit-learn.sourceforge.net/install.html">scikit-learn install</a> page for per-system
+instructions.</p>
+<p>You must have <tt class="docutils literal"><span class="pre">numpy</span></tt>, <tt class="docutils literal"><span class="pre">scipy</span></tt>, <tt class="docutils literal"><span class="pre">matplotlib</span></tt> and <tt class="docutils literal"><span class="pre">ipython</span></tt>
+installed:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Under <strong>Debian or Ubuntu Linux</strong> you should use:</p>
+<div class="highlight-python"><pre>% sudo apt-get install build-essential python-dev python-numpy \
+  python-numpy-dev python-scipy libatlas-dev g++ python-matplotlib \
+  ipython</pre>
+</div>
+</li>
+<li><p class="first">Under <strong>MacOSX</strong> you should probably use a scientific python distribution
+such as <a class="reference external" href="http://stronginference.com/scipy-superpack/">Scipy Superpack</a></p>
+</li>
+<li><p class="first">Under Windows the <a class="reference external" href="http://www.pythonxy.com/">Python(x,y)</a> is probably your best bet to get a
+working numpy / scipy environment up and running.</p>
+</li>
+</ul>
+</div></blockquote>
+<p>Alternatively under Windows and MaxOSX you can use the <a class="reference external" href="https://www.enthought.com/products/epd.php">EPD</a> (Enthought
+Python Distribution) which is a (non-open source) packaging of the
+scientific python stack.</p>
+</div>
+<div class="section" id="build-scikit-learn-from-source">
+<h2>1.2. Build scikit-learn from source<a class="headerlink" href="#build-scikit-learn-from-source" title="Permalink to this headline">¶</a></h2>
+<p>Here are the instructions to install the current master from source
+on a POSIX system (e.g. Linux and MacOSX). <strong>In the folder next to
+$TUTORIAL_HOME</strong> do:</p>
+<div class="highlight-python"><pre>% git clone https://github.com/scikit-learn/scikit-learn.git
+% cd scikit-learn</pre>
 </div>
 <p>You can then build it locally and add it to your PYTHONPATH environment
 variable:</p>
 <div class="highlight-python"><pre>% python setup.py build_ext -i
 % export PYTHONPATH=`pwd`</pre>
 </div>
-<p>If you want to install the library globally, do the following instead:</p>
+<p>Alternatively you can install the library globally:</p>
 <div class="highlight-python"><pre>% python setup.py build
 % sudo python setup.py install</pre>
 </div>
-<p>Whatever the installation procedure you should check that the &#8216;0.7&#8217; version is
-active in your python path:</p>
-<div class="highlight-python"><pre>% python -c "import scikits.learn; print scikits.learn.__version__"
-0.7</pre>
-</div>
 <p>You should also be able to launch the tests from anywhere in the system
 (if nose is installed) with the following:</p>
-<div class="highlight-python"><pre>% python -c "import scikits.learn as skl; skl.test()"</pre>
+<div class="highlight-python"><pre>% nosetests scikits/learn</pre>
 </div>
 <p>The output should end with <tt class="docutils literal"><span class="pre">OK</span></tt> as in:</p>
 <div class="highlight-python"><pre>----------------------------------------------------------------------
-Ran 623 tests in 26.108s
+Ran 589 tests in 36.876s
 
 OK (SKIP=2)</pre>
 </div>
+<p>If this is not the case please send a mail to the <a class="reference external" href="https://lists.sourceforge.net/lists/listinfo/scikit-learn-general">scikit-learn mailing list</a>
+including the error messages along with the version number of all the afore
+mentioned dependencies and your operating system.</p>
 <p>In the rest of the tutorial, the path to the extracted archive folder
-<tt class="docutils literal"><span class="pre">scikits.learn-0.7</span></tt> will be named <tt class="docutils literal"><span class="pre">$SKL_HOME</span></tt>.</p>
+<tt class="docutils literal"><span class="pre">scikits.learn</span></tt> will be named <tt class="docutils literal"><span class="pre">$SKL_HOME</span></tt>.</p>
 </div>
 <div class="section" id="download-the-datasets">
-<h2>1.2. Download the datasets<a class="headerlink" href="#download-the-datasets" title="Permalink to this headline">¶</a></h2>
+<h2>1.3. Download the datasets<a class="headerlink" href="#download-the-datasets" title="Permalink to this headline">¶</a></h2>
 <p>Machine Learning algorithms need data. Go to each <tt class="docutils literal"><span class="pre">$TUTORIAL_HOME/data</span></tt>
 sub-folder and run the <tt class="docutils literal"><span class="pre">fetch_data.py</span></tt> script from there (after
 having read them first).</p>
