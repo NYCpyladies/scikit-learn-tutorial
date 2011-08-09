@@ -61,8 +61,8 @@
         <h3>Contents</h3>
          <ul>
 <li><a class="reference internal" href="#">4. Exercises</a><ul>
-<li><a class="reference internal" href="#exercise-1-sentiment-analysis-on-movie-reviews">4.1. Exercise 1: Sentiment Analysis on movie reviews</a></li>
-<li><a class="reference internal" href="#exercise-2-language-identification">4.2. Exercise 2: Language identification</a></li>
+<li><a class="reference internal" href="#exercise-1-language-identification">4.1. Exercise 1: Language identification</a></li>
+<li><a class="reference internal" href="#exercise-2-sentiment-analysis-on-movie-reviews">4.2. Exercise 2: Sentiment Analysis on movie reviews</a></li>
 <li><a class="reference internal" href="#exercise-3-cli-text-classification-utility">4.3. Exercise 3: CLI text classification utility</a></li>
 <li><a class="reference internal" href="#exercise-4-face-recognition">4.4. Exercise 4: Face recognition</a></li>
 </ul>
@@ -81,15 +81,33 @@
   <div class="section" id="exercises">
 <h1>4. Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
 <p>To do the exercises, copy the content of the &#8216;skeletons&#8217; folder as
-a new folder named &#8216;workspace&#8217;.</p>
+a new folder named &#8216;workspace&#8217;:</p>
+<div class="highlight-python"><pre>% cp -r skeletons workspace</pre>
+</div>
+<p>You can then edit the content of the workspace without fear of loosing
+the original exercise instructions.</p>
 <p>Then fire an ipython shell and run the work-in-progress script with:</p>
 <div class="highlight-python"><pre>[1] %run workspace/exercise_XX_script.py arg1 arg2 arg3</pre>
 </div>
 <p>If an exception is triggered, use <tt class="docutils literal"><span class="pre">%debug</span></tt> to fire-up a post
 mortem ipdb session.</p>
 <p>Refine the implementation and iterate until the exercise is solved.</p>
-<div class="section" id="exercise-1-sentiment-analysis-on-movie-reviews">
-<h2>4.1. Exercise 1: Sentiment Analysis on movie reviews<a class="headerlink" href="#exercise-1-sentiment-analysis-on-movie-reviews" title="Permalink to this headline">¶</a></h2>
+<p><strong>For each exercise, the skeleton file provides all the necessary import
+statements, boilerplate code to load the data and sample code to evaluate
+the predictive accurracy of the model.</strong></p>
+<div class="section" id="exercise-1-language-identification">
+<h2>4.1. Exercise 1: Language identification<a class="headerlink" href="#exercise-1-language-identification" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Write a text classification pipeline using a custom preprocessor and
+<tt class="docutils literal"><span class="pre">CharNGramAnalyzer</span></tt> using data from Wikipedia articles as training set.</li>
+<li>Evaluate the performance on some held out test set.</li>
+</ul>
+<p>ipython command line:</p>
+<div class="highlight-python"><pre>%run workspace/exercise_01_language_train_model.py data/languages/paragraphs/</pre>
+</div>
+</div>
+<div class="section" id="exercise-2-sentiment-analysis-on-movie-reviews">
+<h2>4.2. Exercise 2: Sentiment Analysis on movie reviews<a class="headerlink" href="#exercise-2-sentiment-analysis-on-movie-reviews" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Write a text classification pipeline to classify movie reviews as either
 positive or negative.</li>
@@ -97,18 +115,7 @@ positive or negative.</li>
 <li>Evaluate the performance on a held out test set.</li>
 </ul>
 <p>ipython command line:</p>
-<div class="highlight-python"><pre>%run workspace/exercise_01_sentiment.py data/movie_reviews/txt_sentoken/</pre>
-</div>
-</div>
-<div class="section" id="exercise-2-language-identification">
-<h2>4.2. Exercise 2: Language identification<a class="headerlink" href="#exercise-2-language-identification" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Write a text classification pipeline using a custom preprocessor and
-<tt class="docutils literal"><span class="pre">CharNGramAnalyzer</span></tt> using data from Wikipedia articles as training set.</li>
-<li>Evaluate the performance on some held out test set.</li>
-</ul>
-<p>ipython command line:</p>
-<div class="highlight-python"><pre>%run workspace/exercise_02_language_train_model.py data/languages/paragraphs/</pre>
+<div class="highlight-python"><pre>%run workspace/exercise_02_sentiment.py data/movie_reviews/txt_sentoken/</pre>
 </div>
 </div>
 <div class="section" id="exercise-3-cli-text-classification-utility">
