@@ -198,7 +198,7 @@ belong to one of the target classes:</p>
 </div></blockquote>
 <p><tt class="docutils literal"><span class="pre">scikit-learn</span></tt> embeds a copy of the iris CSV file along with a
 helper function to load it into numpy arrays:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -363,7 +363,7 @@ petals and sepals. This is a classification task, hence we have:</p>
 </div>
 <p>Once the data has this format it is trivial to train a classifier,
 for instance a support vector machine with a linear kernel:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -418,7 +418,7 @@ data (it already comes as vectors of features):</p>
 </div>
 <p>Some <tt class="docutils literal"><span class="pre">scikit-learn</span></tt> classifiers can further predict probabilities
 of the outcome.  This is the case of logistic regression models:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf2</span>
 <span class="go">LogisticRegression(C=1.0, intercept_scaling=1, dual=False, fit_intercept=True,</span>
@@ -450,20 +450,20 @@ most likely outcome is also available:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.linear_model.LogisticRegression</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.LogisticRegression</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">Regularized Logistic Regression based on <tt class="docutils literal"><span class="pre">liblinear</span></tt></td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.svm.LinearSVC</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.svm.LinearSVC</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">Support Vector Machines without kernels based on <tt class="docutils literal"><span class="pre">liblinear</span></tt></td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.svm.SVC</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.svm.SVC</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">Support Vector Machines with kernels based on <tt class="docutils literal"><span class="pre">libsvm</span></tt></td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.linear_model.SGDClassifier</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.SGDClassifier</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">Regularized linear models (SVM or logistic regression) using a Stochastic
 Gradient Descent algorithm written in <tt class="docutils literal"><span class="pre">Cython</span></tt></td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.neighbors.NeighborsClassifier</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.neighbors.NeighborsClassifier</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">k-Nearest Neighbors classifier based on the ball tree datastructure for low
 dimensional data and brute force search for high dimensional data</td>
 </tr>
@@ -518,25 +518,25 @@ some input variables (a.k.a. the features, &#8220;predictors&#8221; or
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.linear_model.Ridge</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.Ridge</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">L2-regularized least squares linear model</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.linear_model.ElasticNet</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.ElasticNet</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">L1+L2-regularized least squares linear model trained using
 Coordinate Descent</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.linear_model.LassoLARS</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.LassoLARS</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">L1-regularized least squares linear model trained with Least Angle
 Regression</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.linear_model.SGDRegressor</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.SGDRegressor</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">L1+L2-regularized least squares linear model trained using
 Stochastic Gradient Descent</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.linear_model.ARDRegression</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.ARDRegression</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">Bayesian Automated Relevance Determination regression</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.svm.SVR</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.svm.SVR</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">Non-linear regression using Support Vector Machines (wrapper for
 <tt class="docutils literal"><span class="pre">libsvm</span></tt>)</td>
 </tr>
@@ -571,7 +571,7 @@ using a truncated Singular Value Decomposition of the matrix <tt class="docutils
 so as to project the data onto a base of the top singular vectors.</p>
 <p>If the number of retained components is 2 or 3, PCA can be used to
 visualize the dataset:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -638,7 +638,7 @@ data matrix, which is not scalable when both <tt class="docutils literal"><span 
 <tt class="docutils literal"><span class="pre">n_features</span></tt> are big (more that a few thousands).</p>
 <p class="last">If you are interested in a number of components that is much
 smaller than both <tt class="docutils literal"><span class="pre">n_samples</span></tt> and <tt class="docutils literal"><span class="pre">n_features</span></tt>, consider using
-<tt class="docutils literal"><span class="pre">scikits.learn.decomposition.RandomizedPCA</span></tt> instead.</p>
+<tt class="docutils literal"><span class="pre">sklearn.decomposition.RandomizedPCA</span></tt> instead.</p>
 </div>
 </div>
 <div class="section" id="other-applications-of-dimensionality-reduction">
@@ -665,7 +665,7 @@ measure (such as the Euclidean distance).</p>
 <p>For instance let us reuse the output of the 2D PCA of the iris
 dataset and try to find 3 groups of samples using the simplest
 clustering algorithm (KMeans):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">RandomState</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -701,37 +701,43 @@ to be clustered to have the shape <tt class="docutils literal"><span class="pre"
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.cluster.KMeans</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.KMeans</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">The simplest, yet effective clustering algorithm. Needs to be
 provided with the number of clusters in advance, and assumes that the
 data is normalized as input (but use a PCA model as preprocessor).</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.cluster.MeanShift</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.MeanShift</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">Can find better looking clusters than KMeans but is not scalable
 to high number of samples.</td>
 </tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.DBSCAN</span></tt>:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body">Can detect irregularly shaped clusters based on density, i.e. sparse regions
+in the input space are likely to become inter-cluster boundaries. Can also
+detect outliers (samples that are not part of a cluster).</td>
+</tr>
 </tbody>
 </table>
-<p>Other clustering algorithms do not work with a data matrix with
-shape <tt class="docutils literal"><span class="pre">(n_samples,</span> <span class="pre">n_features)</span></tt> but directly with a precomputed
-affinity matrix with shape <tt class="docutils literal"><span class="pre">(n_samples,</span> <span class="pre">n_samples)</span></tt>:</p>
+<p>Other clustering algorithms do not work with a data array of shape
+<tt class="docutils literal"><span class="pre">(n_samples,</span> <span class="pre">n_features)</span></tt> but directly with a precomputed affinity matrix
+of shape <tt class="docutils literal"><span class="pre">(n_samples,</span> <span class="pre">n_samples)</span></tt>:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.cluster.AffinityPropagation</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.AffinityPropagation</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">Clustering algorithm based on message passing between data points.</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">scikits.learn.cluster.SpectralClustering</span></tt>:</th></tr>
+<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.SpectralClustering</span></tt>:</th></tr>
 <tr><td>&nbsp;</td><td class="field-body">KMeans applied to a projection of the normalized graph Laplacian:
 finds normalized graph cuts if the affinity matrix is interpreted
 as an adjacency matrix of a graph.</td>
 </tr>
 </tbody>
 </table>
+<p><tt class="docutils literal"><span class="pre">DBSCAN</span></tt> can work with either an array of samples or an affinity matrix.</p>
 <p>Hierarchical clustering is being implemented in a branch that is
 likely to be merged into master before the release of <tt class="docutils literal"><span class="pre">scikit-learn</span></tt>
-0.8.</p>
+0.9.</p>
 </div>
 <div class="section" id="applications-of-clustering">
 <h4>2.3.2.2. Applications of clustering<a class="headerlink" href="#applications-of-clustering" title="Permalink to this headline">¶</a></h4>
@@ -960,7 +966,7 @@ fail to generalize correctly on test data:<ul>
     <div class="footer">
         <p style="text-align: center">This tutorial is for scikit-learn
         version 0.9<p>
-        &copy; 2010–2011, scikits.learn developers (BSD License).
+        &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     </div>
   </body>

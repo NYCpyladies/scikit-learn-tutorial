@@ -125,7 +125,7 @@ categories out of the 20 available in the dataset:</p>
 </pre></div>
 </div>
 <p>We can now load the list of files matching those categories as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">twenty_train</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s">&#39;data/twenty_newsgroups/20news-bydate-train&#39;</span><span class="p">,</span>
 <span class="gp">... </span>                          <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
 <span class="gp">... </span>                          <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -225,7 +225,7 @@ and <tt class="docutils literal"><span class="pre">scikit-learn</span></tt> has 
 <p><tt class="docutils literal"><span class="pre">scikit-learn</span></tt> offers a couple of basic yet useful utilities to
 work with text data. The first one is a preprocessor that removes
 accents and converts to lowercase on roman languages:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">RomanPreprocessor</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">RomanPreprocessor</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s">u&quot;J&#39;ai bien mang</span><span class="se">\xe9</span><span class="s">.&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">RomanPreprocessor</span><span class="p">()</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="go">j&#39;ai bien mange.</span>
@@ -233,7 +233,7 @@ accents and converts to lowercase on roman languages:</p>
 </div>
 <p>The second one is a utility that splits the text into words after
 having applied the preprocessor:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">WordNGramAnalyzer</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">WordNGramAnalyzer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">WordNGramAnalyzer</span><span class="p">()</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="go">[&#39;ai&#39;, &#39;bien&#39;, &#39;mange&#39;]</span>
 </pre></div>
@@ -248,7 +248,7 @@ instead of single words:</p>
 </div>
 <p>These tools are wrapped into a higher level component that is able to build a
 dictionary of features and transform documents to feature vectors:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">count_vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">twenty_train</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_counts</span><span class="o">.</span><span class="n">shape</span>
@@ -279,7 +279,7 @@ corpus.</p>
 <p>This downscaling is called <a class="reference external" href="http://en.wikipedia.org/wiki/Tf–idf">tf–idf</a> for &#8220;Term Frequency times
 Inverse Document Frequency&#8221;.</p>
 <p>Both tf and tf–idf can be computed as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">(</span><span class="n">use_idf</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_tf</span> <span class="o">=</span> <span class="n">tf_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train_tf</span><span class="o">.</span><span class="n">shape</span>
@@ -300,7 +300,7 @@ the category of a post. Let&#8217;s start with a naïve Bayes classifier, which
 provides a nice baseline for this task. <tt class="docutils literal"><span class="pre">scikit-learn</span></tt> includes several
 variants of this classifier; the one most suitable for word counts is the
 multinomial variant:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_tfidf</span><span class="p">,</span> <span class="n">twenty_train</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -327,7 +327,7 @@ on the transformers, since they have already been fit to the training set:</p>
 <p>In order to make the vectorizer =&gt; transformer =&gt; classifier easier
 to work with, <tt class="docutils literal"><span class="pre">scikit-learn</span></tt> provides a <tt class="docutils literal"><span class="pre">Pipeline</span></tt> class that behaves
 like a compound classifier:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text_clf</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;vect&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">()),</span>
 <span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;tfidf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">()),</span>
@@ -361,7 +361,7 @@ linear support vector machine (SVM), which is widely regarded as one of
 the best text classification algorithms (although it&#8217;s also a bit slower
 than naïve Bayes). We can change the learner by just plugging a different
 classifier object into our pipeline:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.svm.sparse</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm.sparse</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text_clf</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;vect&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">()),</span>
 <span class="gp">... </span>    <span class="p">(</span><span class="s">&#39;tfidf&#39;</span><span class="p">,</span> <span class="n">TfidfTransformer</span><span class="p">()),</span>
@@ -375,7 +375,7 @@ classifier object into our pipeline:</p>
 </div>
 <p><tt class="docutils literal"><span class="pre">scikit-learn</span></tt> further provides utilities for more detailed performance
 analysis of the results:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">twenty_test</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">target_names</span><span class="o">=</span><span class="n">twenty_test</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
@@ -408,7 +408,7 @@ chain, it is possible to run an exhaustive search of the best
 parameters on a grid of possible values. We try out all classifiers
 on either words or bigrams, with or without idf, and with a penalty
 parameter of either 100 or 1000 for the linear SVM:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
 <span class="gp">... </span>    <span class="s">&#39;vect__analyzer__max_n&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="s">&#39;tfidf__use_idf&#39;</span><span class="p">:</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
@@ -465,7 +465,7 @@ we can do:</p>
     <div class="footer">
         <p style="text-align: center">This tutorial is for scikit-learn
         version 0.9<p>
-        &copy; 2010–2011, scikits.learn developers (BSD License).
+        &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     </div>
   </body>
