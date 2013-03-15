@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. Machine Learning 101 &mdash; scikit-learn tutorial v0.9 documentation</title>
+    <title>2. Machine Learning 101 &mdash; scikit-learn tutorial 0.9 documentation</title>
+    
     <link rel="stylesheet" href="static/nature.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -23,7 +26,7 @@
     <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
-    <link rel="top" title="scikit-learn tutorial v0.9 documentation" href="index.html" />
+    <link rel="top" title="scikit-learn tutorial 0.9 documentation" href="index.html" />
     <link rel="next" title="3. Working with text data" href="working_with_text_data.html" />
     <link rel="prev" title="1. Tutorial setup" href="setup.html" /> 
   </head>
@@ -145,12 +148,12 @@ expect a numpy array as input <tt class="docutils literal"><span class="pre">X</
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name"><tt class="docutils literal"><span class="pre">n_samples</span></tt>:</th><td class="field-body">The number of samples: each sample is an item to process (e.g.
+<tr class="field-odd field"><th class="field-name"><tt class="docutils literal"><span class="pre">n_samples</span></tt>:</th><td class="field-body">The number of samples: each sample is an item to process (e.g.
 classify). A sample can be a document, a picture, a sound, a
 video, a row in database or CSV file, or whatever you can
 describe with a fixed set of quantitative traits.</td>
 </tr>
-<tr class="field"><th class="field-name"><tt class="docutils literal"><span class="pre">n_features</span></tt>:</th><td class="field-body">The number of features or distinct traits that can be used to
+<tr class="field-even field"><th class="field-name"><tt class="docutils literal"><span class="pre">n_features</span></tt>:</th><td class="field-body">The number of features or distinct traits that can be used to
 describe each item in a quantitative manner.</td>
 </tr>
 </tbody>
@@ -176,8 +179,8 @@ belong to one of the target classes:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2">Features in the Iris dataset:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body"><ol class="first arabic simple" start="0">
+<tr class="field-odd field"><th class="field-name" colspan="2">Features in the Iris dataset:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ol class="first arabic simple" start="0">
 <li>sepal length in cm</li>
 <li>sepal width in cm</li>
 <li>petal length in cm</li>
@@ -185,8 +188,8 @@ belong to one of the target classes:</p>
 </ol>
 </td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2">Target classes to predict:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body"><ol class="first last arabic simple" start="0">
+<tr class="field-even field"><th class="field-name" colspan="2">Target classes to predict:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ol class="first last arabic simple" start="0">
 <li>Iris Setosa</li>
 <li>Iris Versicolour</li>
 <li>Iris Virginica</li>
@@ -284,14 +287,14 @@ into arrays of numerical features.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Text documents:</th><td class="field-body"><p class="first">Count the frequency of each word or pair of consecutive words
+<tr class="field-odd field"><th class="field-name">Text documents:</th><td class="field-body"><p class="first">Count the frequency of each word or pair of consecutive words
 in each document. This approach is called <strong>Bag of Words</strong>.</p>
 <p>Note: we include other file formats such as HTML and PDF in
 this category: an ad-hoc preprocessing step is required to
 extract the plain text in UTF-8 encoding for instance.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Images:</th><td class="field-body"><ul class="first">
+<tr class="field-even field"><th class="field-name">Images:</th><td class="field-body"><ul class="first">
 <li><p class="first">Rescale the picture to a fixed size and <strong>take all the raw
 pixels values</strong> (with or without luminosity normalization)</p>
 </li>
@@ -315,7 +318,7 @@ single array.</p>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Sounds:</th><td class="field-body"><p class="first last">Same strategy as for images within a 1D space instead of 2D</p>
+<tr class="field-odd field"><th class="field-name">Sounds:</th><td class="field-body"><p class="first last">Same strategy as for images within a 1D space instead of 2D</p>
 </td>
 </tr>
 </tbody>
@@ -380,8 +383,8 @@ user in the constructor of the model. We will explain later how to choose
 a good combination using either simple empirical rules or data
 driven selection:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span>
-<span class="go">LinearSVC(loss=&#39;l2&#39;, C=1.0, dual=True, fit_intercept=True, penalty=&#39;l2&#39;,</span>
-<span class="go">     multi_class=False, tol=0.0001, intercept_scaling=1)</span>
+<span class="go">LinearSVC(C=1.0, dual=True, fit_intercept=True, intercept_scaling=1,</span>
+<span class="go">     loss=&#39;l2&#39;, multi_class=False, penalty=&#39;l2&#39;, scale_C=None, tol=0.0001)</span>
 </pre></div>
 </div>
 <p>By default the real model parameters are not initialized. They will be
@@ -421,8 +424,9 @@ of the outcome.  This is the case of logistic regression models:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf2</span>
-<span class="go">LogisticRegression(C=1.0, intercept_scaling=1, dual=False, fit_intercept=True,</span>
-<span class="go">          penalty=&#39;l2&#39;, tol=0.0001)</span>
+<span class="go">LogisticRegression(C=1.0, dual=False, fit_intercept=True, intercept_scaling=1,</span>
+<span class="go">          penalty=&#39;l2&#39;, scale_C=False, tol=0.0001)</span>
+
 
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf2</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
@@ -450,21 +454,21 @@ most likely outcome is also available:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.LogisticRegression</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">Regularized Logistic Regression based on <tt class="docutils literal"><span class="pre">liblinear</span></tt></td>
+<tr class="field-odd field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.LogisticRegression</span></tt>:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Regularized Logistic Regression based on <tt class="docutils literal"><span class="pre">liblinear</span></tt></td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.svm.LinearSVC</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">Support Vector Machines without kernels based on <tt class="docutils literal"><span class="pre">liblinear</span></tt></td>
+<tr class="field-even field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.svm.LinearSVC</span></tt>:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Support Vector Machines without kernels based on <tt class="docutils literal"><span class="pre">liblinear</span></tt></td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.svm.SVC</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">Support Vector Machines with kernels based on <tt class="docutils literal"><span class="pre">libsvm</span></tt></td>
+<tr class="field-odd field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.svm.SVC</span></tt>:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Support Vector Machines with kernels based on <tt class="docutils literal"><span class="pre">libsvm</span></tt></td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.SGDClassifier</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">Regularized linear models (SVM or logistic regression) using a Stochastic
+<tr class="field-even field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.SGDClassifier</span></tt>:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Regularized linear models (SVM or logistic regression) using a Stochastic
 Gradient Descent algorithm written in <tt class="docutils literal"><span class="pre">Cython</span></tt></td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.neighbors.NeighborsClassifier</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">k-Nearest Neighbors classifier based on the ball tree datastructure for low
+<tr class="field-odd field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.neighbors.NeighborsClassifier</span></tt>:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">k-Nearest Neighbors classifier based on the ball tree datastructure for low
 dimensional data and brute force search for high dimensional data</td>
 </tr>
 </tbody>
@@ -480,27 +484,27 @@ for some common engineering tasks:</p>
 <col width="43%" />
 </colgroup>
 <thead valign="bottom">
-<tr><th class="head">Task</th>
+<tr class="row-odd"><th class="head">Task</th>
 <th class="head">Predicted outcomes</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>E-mail classification</td>
+<tr class="row-even"><td>E-mail classification</td>
 <td>Spam, normal, priority mail</td>
 </tr>
-<tr><td>Language identification in text documents</td>
+<tr class="row-odd"><td>Language identification in text documents</td>
 <td>en, es, de, fr, ja, zh, ar, ru...</td>
 </tr>
-<tr><td>News articles categorization</td>
+<tr class="row-even"><td>News articles categorization</td>
 <td>Business, technology, sports...</td>
 </tr>
-<tr><td>Sentiment analysis in customer feedback</td>
+<tr class="row-odd"><td>Sentiment analysis in customer feedback</td>
 <td>Negative, neutral, positive</td>
 </tr>
-<tr><td>Face verification in pictures</td>
+<tr class="row-even"><td>Face verification in pictures</td>
 <td>Same / different person</td>
 </tr>
-<tr><td>Speaker verification in voice recordings</td>
+<tr class="row-odd"><td>Speaker verification in voice recordings</td>
 <td>Same / different person</td>
 </tr>
 </tbody>
@@ -518,26 +522,26 @@ some input variables (a.k.a. the features, &#8220;predictors&#8221; or
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.Ridge</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">L2-regularized least squares linear model</td>
+<tr class="field-odd field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.Ridge</span></tt>:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">L2-regularized least squares linear model</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.ElasticNet</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">L1+L2-regularized least squares linear model trained using
+<tr class="field-even field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.ElasticNet</span></tt>:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">L1+L2-regularized least squares linear model trained using
 Coordinate Descent</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.LassoLARS</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">L1-regularized least squares linear model trained with Least Angle
+<tr class="field-odd field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.LassoLARS</span></tt>:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">L1-regularized least squares linear model trained with Least Angle
 Regression</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.SGDRegressor</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">L1+L2-regularized least squares linear model trained using
+<tr class="field-even field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.SGDRegressor</span></tt>:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">L1+L2-regularized least squares linear model trained using
 Stochastic Gradient Descent</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.ARDRegression</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">Bayesian Automated Relevance Determination regression</td>
+<tr class="field-odd field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.linear_model.ARDRegression</span></tt>:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Bayesian Automated Relevance Determination regression</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.svm.SVR</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">Non-linear regression using Support Vector Machines (wrapper for
+<tr class="field-even field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.svm.SVR</span></tt>:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Non-linear regression using Support Vector Machines (wrapper for
 <tt class="docutils literal"><span class="pre">libsvm</span></tt>)</td>
 </tr>
 </tbody>
@@ -594,19 +598,20 @@ visualize the dataset:</p>
 </div>
 <p>The dataset has been &#8220;normalized&#8221;, which means that the data is now centered on
 both components with unit variance:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X_pca</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>                                   
-<span class="go">array([ -1.44...e-15,   1.73...e-15])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">X_pca</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">array([-0.,  0.])</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X_pca</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">X_pca</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([ 1.,  1.])</span>
 </pre></div>
 </div>
 <p>Furthermore the samples components do no longer carry any linear
 correlation:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X_pca</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>                                 
-<span class="go">array([[  1.00...e+00,  -7.58...e-16],</span>
-<span class="go">       [ -7.58...e-16,   1.00...e+00]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X_pca</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">array([[ 1., -0.],</span>
+<span class="go">       [-0.,  1.]])</span>
 </pre></div>
 </div>
 <p>And visualize the dataset using <tt class="docutils literal"><span class="pre">pylab</span></tt>, for instance by defining the
@@ -671,16 +676,16 @@ clustering algorithm (KMeans):</p>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_pca</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>                     
-<span class="go">array([[ 0.33...,  0.90...],</span>
-<span class="go">       [ 0.99..., -0.69...],</span>
-<span class="go">       [-1.28..., -0.43...]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">array([[ 1.02, -0.71],</span>
+<span class="go">       [ 0.33,  0.89],</span>
+<span class="go">       [-1.29, -0.44]])</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 <span class="go">array([2, 2, 2, 2, 2, 2, 2, 2, 2, 2])</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
-<span class="go">array([1, 1, 0, 1, 1, 1, 0, 1, 1, 0])</span>
+<span class="go">array([0, 0, 1, 0, 0, 0, 1, 0, 0, 1])</span>
 </pre></div>
 </div>
 <p>We can plot the assigned cluster labels instead of the target names
@@ -701,17 +706,17 @@ to be clustered to have the shape <tt class="docutils literal"><span class="pre"
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.KMeans</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">The simplest, yet effective clustering algorithm. Needs to be
+<tr class="field-odd field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.KMeans</span></tt>:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">The simplest, yet effective clustering algorithm. Needs to be
 provided with the number of clusters in advance, and assumes that the
 data is normalized as input (but use a PCA model as preprocessor).</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.MeanShift</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">Can find better looking clusters than KMeans but is not scalable
+<tr class="field-even field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.MeanShift</span></tt>:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">Can find better looking clusters than KMeans but is not scalable
 to high number of samples.</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.DBSCAN</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">Can detect irregularly shaped clusters based on density, i.e. sparse regions
+<tr class="field-odd field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.DBSCAN</span></tt>:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Can detect irregularly shaped clusters based on density, i.e. sparse regions
 in the input space are likely to become inter-cluster boundaries. Can also
 detect outliers (samples that are not part of a cluster).</td>
 </tr>
@@ -724,11 +729,11 @@ of shape <tt class="docutils literal"><span class="pre">(n_samples,</span> <span
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.AffinityPropagation</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">Clustering algorithm based on message passing between data points.</td>
+<tr class="field-odd field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.AffinityPropagation</span></tt>:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">Clustering algorithm based on message passing between data points.</td>
 </tr>
-<tr class="field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.SpectralClustering</span></tt>:</th></tr>
-<tr><td>&nbsp;</td><td class="field-body">KMeans applied to a projection of the normalized graph Laplacian:
+<tr class="field-even field"><th class="field-name" colspan="2"><tt class="docutils literal"><span class="pre">sklearn.cluster.SpectralClustering</span></tt>:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">KMeans applied to a projection of the normalized graph Laplacian:
 finds normalized graph cuts if the affinity matrix is interpreted
 as an adjacency matrix of a graph.</td>
 </tr>
@@ -791,7 +796,7 @@ model.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Exercise:</th><td class="field-body"><p class="first">Fit a model that is able to solve the XOR problem using the GUI:
+<tr class="field-odd field"><th class="field-name">Exercise:</th><td class="field-body"><p class="first">Fit a model that is able to solve the XOR problem using the GUI:
 the XOR problem is composed of 4 samples:</p>
 <blockquote>
 <div><ul class="simple">
@@ -802,7 +807,7 @@ the XOR problem is composed of 4 samples:</p>
 <p><strong>Question</strong>: is the XOR problem linearly separable?</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Exercise:</th><td class="field-body"><p class="first last">Construct a problem with less than 10 points where the predictive
+<tr class="field-even field"><th class="field-name">Exercise:</th><td class="field-body"><p class="first last">Construct a problem with less than 10 points where the predictive
 accuracy of the best linear model is 50%.</p>
 </td>
 </tr>
@@ -967,7 +972,7 @@ fail to generalize correctly on test data:<ul>
         <p style="text-align: center">This tutorial is for scikit-learn
         version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     </div>
   </body>
 </html>
